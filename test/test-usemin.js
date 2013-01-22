@@ -166,8 +166,12 @@ describe('usemin', function () {
       assert.ok(concat);
       assert.ok(concat['scripts/plugins.js']);
       assert.equal(concat['scripts/plugins.js'].length, 13);
+      assert.ok(concat['scripts/concat.js']);
+      assert.equal(concat['scripts/concat.js'].length, 2);
       assert.ok(concat['styles/main.min.css']);
       assert.equal(concat['styles/main.min.css'].length, 1);
+      assert.ok(concat['styles/concat.css']);
+      assert.equal(concat['styles/concat.css'].length, 2);
 
       var requirejs = grunt.config('requirejs');
       assert.ok(requirejs.baseUrl);
@@ -179,6 +183,11 @@ describe('usemin', function () {
       var min = grunt.config('min');
       assert.equal(min['scripts/amd-app.js'], 'scripts/amd-app.js');
       assert.equal(min['scripts/plugins.js'], 'scripts/plugins.js');
+      assert.ok(!min['scripts/concat.js']);
+
+      var css = grunt.config('css');
+      assert.equal(css['styles/main.min.css'], 'styles/main.min.css');
+      assert.ok(!css['styles/concat.css']);
     });
 
     it('output config for subsequent tasks (requirejs, concat, ..) should be relative to observed file', function () {

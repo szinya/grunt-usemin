@@ -34,7 +34,7 @@ var inspect = function (obj) {
 //       ... HTML Markup, list of script / link tags.
 //     <!-- endbuild -->
 //
-// - type: is either js or css.
+// - type: is either js, js-concat, css or css-concat.
 // - path: is the file path of the optimized file, the target output.
 //
 // An example of this in completed form can be seen below:
@@ -50,6 +50,8 @@ var inspect = function (obj) {
 // Internally, the task parses your HTML markup to find each of these blocks, and
 // initializes for you the corresponding Grunt config for the concat / min tasks
 // when `type=js`, the concat / css tasks when `type=css`.
+// When using `type=js-concat` or `type=css-concat` the config for the concat task
+// is affected only.
 //
 // The task also handles use of RequireJS, for the scenario where you specify
 // the main entry point for your application using the "data-main" attribute

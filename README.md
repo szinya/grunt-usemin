@@ -34,7 +34,7 @@ Custom HTML "block" comments are provided as an API for interacting with the bui
 <!-- endbuild -->
 ```
 
-- **type**: either `js` or `css`
+- **type**: either `js`, `js-concat`, `css` or `css-concat`
 - **path**: the file path of the optimized file, the target output
 
 An example of this in completed form can be seen below:
@@ -49,6 +49,7 @@ An example of this in completed form can be seen below:
 ```
 
 Internally, the task parses your HTML markup to find each of these blocks, and initializes for you the corresponding Grunt config for the concat / min tasks when `type=js`, the concat / css tasks when `type=css`.
+When using `type=js-concat` or `type=css-concat` the config for the concat task is affected only.
 
 The task also handles use of RequireJS, for the scenario where you specify the main entry point for your application using the "data-main" attribute as follows:
 
